@@ -68,11 +68,11 @@ Or run the compiled binary directly:
 ## Future Improvements
 
 Potential enhancements based on the original project:
-- [ x ] Support for different brightness calculation methods (luminosity, min/max)
-- Color output support
-- [ x ] Brightness inversion option
-- [ x ] Command-line arguments for customization (inversion option, brightness method, etc.)
-- Support for additional image formats
+- [x] Support for different brightness calculation methods (luminosity, min/max)
+- [x] Command-line arguments for customization (inversion option, brightness method, etc.)
+- [x] Brightness inversion option
+- [ ] Color output support
+- [ ] Support for additional image formats
 
 ## License
 
