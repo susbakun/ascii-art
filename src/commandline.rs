@@ -11,11 +11,17 @@ impl CommandLine {
         opts.optopt("m", "method", "Brightness method", "Minmax or average");
         opts.optopt("p", "photo", "Photo file path", "File Path");
         opts.optopt("v", "video", "Video file path", "File Path");
+        opts.optopt(
+            "r",
+            "rate",
+            "Specify the frame rate of the video",
+            "Frame Rate",
+        );
 
         opts.optflag("i", "invert", "Invert color");
         opts.optflag("g", "green", "Print in green");
-        opts.optflag("h", "help", "Print help menu");
         opts.optflag("c", "color", "Print image in the original color");
+        opts.optflag("h", "help", "Print help menu");
 
         let matches = opts.parse(std::env::args().skip(1)).unwrap_or_else(|f| {
             eprintln!("Error: {}", f);

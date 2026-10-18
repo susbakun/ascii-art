@@ -114,7 +114,7 @@ Potential enhancements based on the original project:
 - [x] Color output support
 - [x] Video support
 - [ ] Support for additional image formats
-- [ ] Configurable video size and frame rate
+- [x] Configurable frame rate
 
 ## References
 

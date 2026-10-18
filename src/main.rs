@@ -37,11 +37,13 @@ fn main() {
     // handle videos here
     if cl.is_present("v") {
         let video_path = cl.str_arg("v", "./assets/test_video.mp4");
+        let frame_rate: u32 = cl.str_arg("r", "15").parse().unwrap_or(15);
 
         render_video(
             &video_path,
             target_width,
             target_height,
+            frame_rate,
             brightness_method,
             invert,
             &color_mode,
