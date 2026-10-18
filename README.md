@@ -76,7 +76,7 @@ Potential enhancements based on the original project:
 - [x] Support for different brightness calculation methods (luminosity, min/max)
 - [x] Command-line arguments for customization (inversion option, brightness method, etc.)
 - [x] Brightness inversion option
-- [ ] Color output support
+- [x] Color output support
 
 ## References
 
