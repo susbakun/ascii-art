@@ -22,12 +22,14 @@ This is an educational project based on [Programming Projects for Advanced Begin
 ## Installation
 
 1. Clone this repository:
+
 ```bash
 git clone <repository-url>
 cd ascii_art
 ```
 
 2. Build the project:
+
 ```bash
 cargo build --release
 ```
@@ -41,11 +43,13 @@ cargo run --release <path-to-image.jpg>
 ```
 
 For example:
+
 ```bash
 cargo run --release ascii-pineapple.jpg
 ```
 
 Or run the compiled binary directly:
+
 ```bash
 ./target/release/ascii_art <path-to-image.jpg>
 ```
@@ -68,17 +72,12 @@ Or run the compiled binary directly:
 ## Future Improvements
 
 Potential enhancements based on the original project:
+
 - [x] Support for different brightness calculation methods (luminosity, min/max)
 - [x] Command-line arguments for customization (inversion option, brightness method, etc.)
 - [x] Brightness inversion option
 - [ ] Color output support
-- [ ] Support for additional image formats
-
-## License
-
-This is an educational project. Please refer to the original project guide for more information and extensions.
 
 ## References
 
 - [Programming Projects for Advanced Beginners #1: ASCII art](https://robertheaton.com/2018/06/12/programming-projects-for-advanced-beginners-ascii-art/) by Robert Heaton
-
