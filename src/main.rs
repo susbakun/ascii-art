@@ -51,6 +51,7 @@ fn main() {
         return;
     }
 
+    // then it must be a photo
     let image_path = cl.str_arg("p", "./assets/kaiji_kun.jpg");
     render_photo(
         &image_path,
