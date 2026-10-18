@@ -14,7 +14,7 @@ pub fn print_image(
     ascii_matrix: &Vec<Vec<char>>,
     brightness_matrix: &Vec<Vec<u8>>,
     pixel_matrix: &Vec<Vec<[u8; 3]>>,
-    color_mode: ColorMode,
+    color_mode: &ColorMode,
 ) -> Result<(), Error> {
     ascii_matrix
         .iter()

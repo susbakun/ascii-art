@@ -3,19 +3,19 @@
 mod brightness;
 mod commandline;
 mod matrix;
+mod photo;
 mod prelude;
 mod terminal;
+mod video;
 
 use commandline::CommandLine;
-use image::{ImageReader, imageops::FilterType};
 
-use crate::prelude::ColorMode;
+use crate::{photo::render_photo, prelude::ColorMode, video::render_video};
 
 fn main() {
     let cl = CommandLine::new();
 
     let brightness_method = cl.str_arg("m", "average");
-    let file_path = cl.str_arg("f", "./kaiji_kun.jpg");
 
     let invert = cl.is_present("i");
 
@@ -27,30 +27,35 @@ fn main() {
         ColorMode::Mono
     };
 
-    let img = ImageReader::open(file_path).expect("Couldn't read the file");
-
     // Resize to fit terminal (accounting for 3x horizontal stretch and ~2:1 character aspect ratio)
     // Target: ~120-150 characters wide, so resize to ~40-50 pixels wide
     let target_width = 50;
     let target_height = 40;
 
-    let img_buffer = img
-        .decode()
-        .expect("Failed to get decode the image")
-        .resize(target_width, target_height, FilterType::Lanczos3)
-        .to_rgb8();
-
     let brightness_method = brightness::get_brightness_method(&brightness_method);
 
-    let pixel_matrix = matrix::get_pixel_matrix(&img_buffer);
-    let brightness_matrix = matrix::get_brightness_matrix(&pixel_matrix, &brightness_method);
-    let ascii_matrix = matrix::get_ascii_matrix(&brightness_matrix, invert);
+    // handle videos here
+    if cl.is_present("v") {
+        let video_path = cl.str_arg("v", "./assets/test_video.mp4");
 
-    let dimensions = img_buffer.dimensions();
+        render_video(
+            &video_path,
+            target_width,
+            target_height,
+            brightness_method,
+            invert,
+            &color_mode,
+        );
+        return;
+    }
 
-    println!("Successfully loaded image!");
-    println!("Image size: {} x {}", dimensions.0, dimensions.1);
-
-    terminal::print_image(&ascii_matrix, &brightness_matrix, &pixel_matrix, color_mode)
-        .expect("Couldn't print the image");
+    let image_path = cl.str_arg("p", "./assets/kaiji_kun.jpg");
+    render_photo(
+        &image_path,
+        target_width,
+        target_height,
+        brightness_method,
+        invert,
+        &color_mode,
+    );
 }

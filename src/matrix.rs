@@ -51,3 +51,11 @@ pub fn get_ascii_matrix(brightness_matrix: &Vec<Vec<u8>>, invert: bool) -> Vec<V
 
     ascii_matrix
 }
+
+pub fn pixel_matrix_from_raw(buffer: &Vec<u8>, width: usize) -> Vec<Vec<[u8; 3]>> {
+    buffer
+        .chunks_exact(width * 3)
+        .into_iter()
+        .map(|row| row.chunks_exact(3).map(|p| [p[0], p[1], p[2]]).collect())
+        .collect()
+}

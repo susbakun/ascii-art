@@ -9,7 +9,8 @@ impl CommandLine {
         let mut opts = getopts::Options::new();
 
         opts.optopt("m", "method", "Brightness method", "Minmax or average");
-        opts.optopt("f", "file", "Image file name", "File Name");
+        opts.optopt("p", "photo", "Photo file path", "File Path");
+        opts.optopt("v", "video", "Video file path", "File Path");
 
         opts.optflag("i", "invert", "Invert color");
         opts.optflag("g", "green", "Print in green");
